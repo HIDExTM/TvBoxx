@@ -11,13 +11,13 @@ import 'package:url_strategy/url_strategy.dart';
 import 'app/data/http/http.dart';
 import 'app/data/services/remote/internet_checker.dart';
 import 'app/domain/repositories/preferences_repository.dart';
-import 'app/generated/translations.g.dart';
 import 'app/inject_repositories.dart';
 import 'app/my_app.dart';
 import 'app/presentation/global/controllers/favorites/favorites_controller.dart';
 import 'app/presentation/global/controllers/favorites/state/favorites_state.dart';
 import 'app/presentation/global/controllers/session_controller.dart';
 import 'app/presentation/global/controllers/theme_controller.dart';
+import 'app/presentation/routes/routes.dart';
 
 void main() async {
   setPathUrlStrategy();
@@ -25,11 +25,11 @@ void main() async {
 
   print('🔄 Iniciando configuración...');
 
-  final secureStorage = !kIsWeb ? const FlutterSecureStorage() : null;
-  final apiKey = !kIsWeb
-      ? await secureStorage!.read(key: 'api_key') ??
-          '5bed77d45c8c0c13c37c7800f7af6aa1'
-      : '5bed77d45c8c0c13c37c7800f7af6aa1';
+  final secureStorage = kIsWeb ? null : const FlutterSecureStorage();
+  final apiKey = kIsWeb
+      ? '5bed77d45c8c0c13c37c7800f7af6aa1'
+      : await secureStorage!.read(key: 'api_key') ??
+          '5bed77d45c8c0c13c37c7800f7af6aa1';
 
   final http = Http(
     client: Client(),
@@ -37,11 +37,16 @@ void main() async {
     apiKey: apiKey,
   );
 
+  final connectivity = kIsWeb ? null : Connectivity();
+  final systemDarkMode = kIsWeb
+      ? false
+      : WidgetsBinding.instance.window.platformBrightness == Brightness.dark;
+
   print('🔄 Inyectando dependencias...');
   await injectRepositories(
-    systemDarkMode: false, // En Web no usamos `platformBrightness`
+    systemDarkMode: systemDarkMode,
     http: http,
-    languageCode: LocaleSettings.currentLocale.languageCode,
+    languageCode: 'en', // Se puede cambiar según idioma
     secureStorage: FlutterSecureStorage(),
     preferences: await SharedPreferences.getInstance(),
     connectivity: Connectivity(),
@@ -50,7 +55,7 @@ void main() async {
   print('🎉 injectRepositories finalizó correctamente.');
 
   print('✅ Repositorios cargados. Ejecutando app...');
-  runApp(const Root());
+  runApp(const Root(initialRoute: Routes.signIn));
 }
 
 class Root extends StatelessWidget {
@@ -89,11 +94,9 @@ class Root extends StatelessWidget {
           ),
         ),
       ],
-      child: TranslationProvider(
-        child: MyApp(
-          initialRoute: initialRoute,
-          overrideRoutes: overrideRoutes,
-        ),
+      child: MyApp(
+        initialRoute: initialRoute ?? Routes.signIn,
+        overrideRoutes: overrideRoutes,
       ),
     );
   }
