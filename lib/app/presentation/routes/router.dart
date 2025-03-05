@@ -9,7 +9,6 @@ import '../global/controllers/session_controller.dart';
 import '../modules/favorites/views/favorites_view.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/movie/views/movie_view.dart';
-import '../modules/offline/views/offline_view.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/sign_in/views/sign_in_view.dart';
 import 'routes.dart';
@@ -79,9 +78,9 @@ mixin RouterMixin on State<MyApp> {
         builder: (_, __) => const ProfileView(),
       ),
       GoRoute(
-        name: Routes.offline,
-        path: '/offline',
-        builder: (_, __) => const OfflineView(),
+        name: Routes.signIn,
+        path: '/sign-in',
+        builder: (_, __) => const SignInView(),
       ),
       GoRoute(
         name: Routes.favorites,
