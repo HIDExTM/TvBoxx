@@ -1,0 +1,28 @@
+^J:\PROYECTOS\TVBOX\BUILD\WINDOWS\X64\CMAKEFILES\4B30E340EE6C4E3BFB2FAC7CAA4E309F\FLUTTER_WINDOWS.DLL.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E env FLUTTER_ROOT=C:\dev\flutter PROJECT_DIR=J:\Proyectos\tvbox FLUTTER_ROOT=C:\dev\flutter FLUTTER_EPHEMERAL_DIR=J:\Proyectos\tvbox\windows\flutter\ephemeral PROJECT_DIR=J:\Proyectos\tvbox FLUTTER_TARGET=J:\Proyectos\tvbox\lib\main.dart DART_OBFUSCATION=false TRACK_WIDGET_CREATION=true TREE_SHAKE_ICONS=false PACKAGE_CONFIG=J:\Proyectos\tvbox\.dart_tool\package_config.json C:/dev/flutter/packages/flutter_tools/bin/tool_backend.bat windows-x64 Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^J:\PROYECTOS\TVBOX\BUILD\WINDOWS\X64\CMAKEFILES\EEFD49F004DE9FE198FEF391193F57CB\FLUTTER_ASSEMBLE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^J:\PROYECTOS\TVBOX\WINDOWS\FLUTTER\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SJ:/Proyectos/tvbox/windows -BJ:/Proyectos/tvbox/build/windows/x64 --check-stamp-file J:/Proyectos/tvbox/build/windows/x64/flutter/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
