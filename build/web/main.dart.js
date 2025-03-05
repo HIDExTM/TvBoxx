@@ -100498,7 +100498,7 @@ CJ(){var s=0,r=A.M(t.y),q,p=2,o=[],n,m,l,k
 var $async$CJ=A.I(function(a,b){if(a===1){o.push(b)
 s=p}while(true)switch(s){case 0:p=4
 s=7
-return A.G(A.beg(A.dC("https://clients3.google.com/generate_204",0,null)),$async$CJ)
+return A.G(A.beg(A.dC("https://www.gstatic.com/generate_204",0,null)),$async$CJ)
 case 7:n=b
 m=n.b
 q=m===204
