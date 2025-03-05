@@ -8,7 +8,7 @@ import '../services/remote/internet_checker.dart';
 
 class ConnectivityRepositoryImpl implements ConnectivityRepository {
   final Connectivity _connectivity;
-  final InternetChecker _internetChecker;
+  final InternetChecked _internetChecker;
   final _controller = StreamController<bool>.broadcast();
 
   late bool _hasInternet;

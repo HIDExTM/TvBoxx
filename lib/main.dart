@@ -48,7 +48,7 @@ void main() async {
     secureStorage: secureStorage,
     preferences: await SharedPreferences.getInstance(),
     connectivity: Connectivity(),
-    internetChecker: InternetChecker(),
+    internetChecker: InternetChecked(),
   );
   print('🎉 injectRepositories finalizó correctamente.');
 

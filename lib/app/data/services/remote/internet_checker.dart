@@ -1,18 +1,18 @@
-// coverage:ignore-file
-import 'dart:io';
+import 'dart:io' show InternetAddress; // Solo se usa en móviles
 
-import 'package:flutter/foundation.dart';
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
+import 'package:universal_platform/universal_platform.dart'; // ✅ Agregar esta librería
 
-class InternetChecker {
+class InternetChecked {
   Future<bool> hasInternet() async {
     try {
-      if (kIsWeb) {
-        final response = await get(
-          Uri.parse('8.8.8.8'),
-        );
-        return response.statusCode == 200;
+      if (UniversalPlatform.isWeb) {
+        // ✅ Verificación para Web (incluido Vercel)
+        final response = await http
+            .get(Uri.parse('https://clients3.google.com/generate_204'));
+        return response.statusCode == 204;
       } else {
+        // ✅ Verificación para móviles (Android/iOS)
         final list = await InternetAddress.lookup('google.com');
         return list.isNotEmpty && list.first.rawAddress.isNotEmpty;
       }
