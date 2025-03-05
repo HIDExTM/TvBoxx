@@ -29979,7 +29979,7 @@ n=A.fA(a,!1,t.hj)
 m=$.j7()
 l=m.il(0,t.xy).d
 l===$&&A.b()
-if(!l){q="offline"
+if(!l){q="sign-in"
 s=1
 break}s=3
 return A.G(m.il(0,t.VY).gCZ(),$async$Mn)

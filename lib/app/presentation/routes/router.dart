@@ -21,7 +21,7 @@ Future<String> getInitialRouteName(BuildContext context) async {
   final hasInternet = Repositories.connectivity.hasInternet;
 
   if (!hasInternet) {
-    return Routes.offline;
+    return Routes.signIn;
   }
 
   final isSignedIn = await Repositories.authentication.isSignedIn;
