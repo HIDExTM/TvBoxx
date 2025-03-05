@@ -1,5 +1,3 @@
-import 'dart:ui' as ui;
-
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -38,7 +36,9 @@ void main() async {
     apiKey: apiKey,
   );
 
-  final systemDarkMode = ui.window.platformBrightness == Brightness.dark;
+  final systemDarkMode =
+      WidgetsBinding.instance.platformDispatcher.platformBrightness ==
+          Brightness.dark;
 
   print('🔄 Inyectando dependencias...');
   await injectRepositories(
