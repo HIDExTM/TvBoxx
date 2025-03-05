@@ -1,10 +1,11 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:shared_preferences/src/shared_preferences_legacy.dart';
 
 const sessionIdKey = 'sessionId';
 const accountKey = 'accountId';
 
 class SessionService {
-  SessionService(this._secureStorage);
+  SessionService(this._secureStorage, {FlutterSecureStorage? secureStorage, SharedPreferences? preferences});
 
   final FlutterSecureStorage _secureStorage;
 

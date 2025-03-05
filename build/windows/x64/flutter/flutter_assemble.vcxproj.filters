@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="J:\Proyectos\tvbox\build\windows\x64\CMakeFiles\4b30e340ee6c4e3bfb2fac7caa4e309f\flutter_windows.dll.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="J:\Proyectos\tvbox\build\windows\x64\CMakeFiles\eefd49f004de9fe198fef391193f57cb\flutter_assemble.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="J:\Proyectos\tvbox\windows\flutter\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="J:\Proyectos\tvbox\build\windows\x64\flutter\CMakeFiles\flutter_assemble" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{602AFBBB-E8C4-34B2-81D4-1E1EB5D652D1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

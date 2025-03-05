@@ -1,18 +1,18 @@
-import 'dart:io' show InternetAddress;
+// coverage:ignore-file
+import 'dart:io';
 
-import 'package:http/http.dart' as http;
-import 'package:universal_platform/universal_platform.dart';
+import 'package:flutter/foundation.dart';
+import 'package:http/http.dart';
 
-class InternetChecked {
+class InternetChecker {
   Future<bool> hasInternet() async {
     try {
-      if (UniversalPlatform.isWeb) {
-        // ✅ Nueva URL sin restricciones CORS
-        final response =
-            await http.get(Uri.parse('https://www.gstatic.com/generate_204'));
-        return response.statusCode == 204;
+      if (kIsWeb) {
+        final response = await get(
+          Uri.parse('8.8.8.8'),
+        );
+        return response.statusCode == 200;
       } else {
-        // ✅ Verificación para móviles
         final list = await InternetAddress.lookup('google.com');
         return list.isNotEmpty && list.first.rawAddress.isNotEmpty;
       }

@@ -33,7 +33,7 @@ Future<void> injectRepositories({
   required FlutterSecureStorage secureStorage,
   required SharedPreferences preferences,
   required Connectivity connectivity,
-  required InternetChecked internetChecker,
+  required InternetChecker internetChecker,
   
 }) async {
   final sessionService = SessionService(secureStorage);
