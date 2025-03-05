@@ -1,7 +1,9 @@
-import 'dart:io';
-
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
+
+/// Se define una constante para detectar si estamos en modo test sin usar dart:io.
+const bool isFlutterTest =
+    bool.fromEnvironment('FLUTTER_TEST', defaultValue: false);
 
 class MyNetworkImage extends StatelessWidget {
   const MyNetworkImage({
@@ -15,6 +17,7 @@ class MyNetworkImage extends StatelessWidget {
     this.opacity,
     this.fit,
   });
+
   final String url;
   final String? semanticLabel;
   final bool excludeFromSemantics;
@@ -26,7 +29,7 @@ class MyNetworkImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.environment.keys.contains('FLUTTER_TEST')) {
+    if (isFlutterTest) {
       return const SizedBox();
     }
     // coverage:ignore-start

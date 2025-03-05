@@ -1,13 +1,11 @@
-import 'dart:ui' as ui;
-
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-// Asegura que slang_flutter esté importado
 import 'package:url_strategy/url_strategy.dart';
 
 import 'app/data/http/http.dart';
@@ -21,7 +19,14 @@ import 'app/presentation/global/controllers/favorites/state/favorites_state.dart
 import 'app/presentation/global/controllers/session_controller.dart';
 import 'app/presentation/global/controllers/theme_controller.dart';
 
-// coverage:ignore-start
+void checkPlatform() {
+  if (kIsWeb) {
+    print('Ejecutando en la web');
+  } else {
+    print('Ejecutando en una plataforma nativa');
+  }
+}
+
 void main() async {
   setPathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,7 +43,11 @@ void main() async {
     apiKey: apiKey,
   );
 
-  final systemDarkMode = ui.window.platformBrightness == Brightness.dark;
+  // Detectar el modo oscuro correctamente en todas las plataformas
+  final bool systemDarkMode = kIsWeb
+      ? false // En Web no se puede obtener directamente el modo oscuro
+      : WidgetsBinding.instance.platformDispatcher.platformBrightness ==
+          Brightness.dark;
 
   print('🔄 Inyectando dependencias...');
   await injectRepositories(
@@ -55,8 +64,6 @@ void main() async {
   print('✅ Repositorios cargados. Ejecutando app...');
   runApp(const Root());
 }
-
-// coverage:ignore-end
 
 class Root extends StatelessWidget {
   const Root({
