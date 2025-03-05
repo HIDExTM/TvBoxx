@@ -16,7 +16,7 @@ import 'package:waaaaaaaaaa/app/domain/repositories/trending_repository.dart';
     Client,
     FlutterSecureStorage,
     Connectivity,
-    InternetChecker,
+    InternetChecked,
     SharedPreferences,
     PreferencesRepository,
     AuthenticationRepository,
