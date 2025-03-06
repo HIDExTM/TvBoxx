@@ -1,7 +1,7 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter/foundation.dart'; // Importar kIsWeb
 
 import '../../domain/repositories/connectivity_repository.dart';
 import '../services/remote/internet_checker.dart';
@@ -36,8 +36,7 @@ class ConnectivityRepositoryImpl implements ConnectivityRepository {
 
     _initialized = true;
 
-    _connectivity.onConnectivityChanged.skip(kIsWeb ? 0 : 1).listen(
-      // Cambio aquí
+    _connectivity.onConnectivityChanged.skip(Platform.isIOS ? 1 : 0).listen(
       (event) async {
         _subscription?.cancel();
         _subscription =
