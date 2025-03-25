@@ -16,7 +16,7 @@ Future<void> _initApp(WidgetTester tester) {
       overrideRoutes: [
         GoRoute(
           name: Routes.movie,
-          path: '/movie',
+          path: '/moviee',
           builder: (_, __) => const MovieView(
             movieId: 123,
           ),
